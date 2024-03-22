@@ -2,14 +2,18 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-// Define your routes
+router.use(express.static(path.join(__dirname, '../resources')));
+
 router.get('/', (req, res) => {
-    // Get the absolute path to the HTML file
     const filePath = path.join(__dirname, '../resources/Restaurantly/index.html');
-    
-    // Send the HTML file
     res.sendFile(filePath);
 });
 
-// Export the router
+router.use(express.static(path.join(__dirname, '../resources')));
+
+router.get('/AdminPanel', (req, res) => {
+    const filePath = path.join(__dirname, '../resources/AdminPanel/index.html');
+    res.sendFile(filePath);
+});
+
 module.exports = router;
