@@ -13,6 +13,7 @@ router.get("/login", AuthController.homePage);
 // Define route handler for /menu using the MenuController to fetch menu data
 router.get("/menu", MenuController.index);
 router.post("/menu", MenuController.store);
+router.get("/menu-create", MenuController.store);
 
 // Define a middleware for handling 404 errors
 router.use((req, res) => {
