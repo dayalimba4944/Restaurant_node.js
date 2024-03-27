@@ -378,29 +378,27 @@
                             <!-- <p>For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. </p> -->
 
                             <!-- Custom Styled Validation -->
-                            <!-- <form class="row g-3 needs-validation" novalidate> -->
-                                <form id="createDataForm" class="row g-3 needs-validation" novalidate>
+                            <form class="row g-3 needs-validation" novalidate>
+
                                 <div class="col-md-4">
-                                    <label for="validationCustom04" class="form-label">Menu Categories
-                                        <span class="text-danger">*</span></label>
-                                    </label>
+                                    <label for="validationCustom04" class="form-label">Food Type</label>
                                     <select class="form-select" id="validationCustom04" required>
                                         <option selected disabled value="">Choose...</option>
                                         <option>...</option>
                                     </select>
                                     <div class="invalid-feedback">
-                                        Please select a valid Type.
+                                        Please select a valid state.
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="validationCustom01" class="form-label">Menu Name 
-                                        <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="validationCustom01" value=""
+                                    <label for="validationCustom01" class="form-label">Food Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="validationCustom01" value="John"
                                         required>
-                                    <!-- <div class="valid-feedback">
+                                    <div class="valid-feedback">
                                         Looks good!
-                                    </div> -->
+                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
@@ -408,7 +406,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group has-validation">
-                                        <span class="input-group-text" id="inputGroupPrepend">₹</span>
+                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
                                         <input type="text" class="form-control" id="validationCustomUsername"
                                             aria-describedby="inputGroupPrepend" required>
                                         <div class="invalid-feedback">
@@ -425,21 +423,23 @@
                                             <div class="form-check pe-3">
                                                 <input type="radio" class="form-check-input" id="validationFormCheck2"
                                                     name="radio-stacked" required>
-                                                <label class="form-check-label" for="validationFormCheck2">Veg</label>
+                                                <label class="form-check-label" for="validationFormCheck2">veg</label>
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="radio" class="form-check-input" id="validationFormCheck3"
                                                     name="radio-stacked" required>
-                                                <label class="form-check-label" for="validationFormCheck3">Non Veg</label>
-                                                <!-- <div class="invalid-feedback">More example invalid feedback text</div> -->
+                                                <label class="form-check-label" for="validationFormCheck3">non veg</label>
+                                                <div class="invalid-feedback">More example invalid feedback text</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-10">
                                          <div class="form-check mb-3">
-                                            <input type="checkbox" class="form-check-input" id="extra-spicy" >
-                                            <label class="form-check-label" for="extra-spicy">Extra Spicy</label>
-                                            <!-- <div class="invalid-feedback">Example invalid feedback text</div> -->
+                                            <input type="checkbox" class="form-check-input" id="validationFormCheck1"
+                                                required>
+                                            <label class="form-check-label" for="validationFormCheck1">extra
+                                                spicy</label>
+                                            <div class="invalid-feedback">Example invalid feedback text</div>
                                         </div>
                                     </div>
                                 </div>
@@ -448,11 +448,11 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">File Upload <span
                                             class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" id="formFile" required>
+                                    <input class="form-control" type="file" id="formFile">
                                 </div>
                                 <div class="col-lg-12">
                                     <!-- TinyMCE Editor -->
-                                    <label for="validationCustomUsername" class="form-label">Discretion</label>
+                                    <label for="validationCustomUsername" class="form-label">discretion</label>
                                     <textarea class="tinymce-editor">
                                     </textarea>
                                     <!-- End TinyMCE Editor -->
@@ -494,44 +494,6 @@
 
     <!-- Template Main JS File -->
     <script src="../assetsAdminPanel/js/main.js"></script>
-
-    
-<script>
-    // Wait for the DOM to be fully loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById('createDataForm');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            const formData = new FormData(form);
-
-            fetch('http://127.0.0.1:3000/api/menu', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-
-                console.log('Success:', data);
-
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    });
-</script>
 
 </body>
 
